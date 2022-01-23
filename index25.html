@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Пример 25</title>
+    </head>
+
+    <body>
+      <script>
+        //Request for the number to be raised to a power (Запрос числа, которое необходимо возвести в степень)
+        let x = prompt('Введите число x', '');
+        //Checking the correctness of the entered number (Проверка правильности введенного числа)
+        while(x.length == 0)
+        {
+          alert('Вы забыли ввести значение переменной x!');
+          x = prompt('Введите число x', '');
+        }
+
+        while (/[^0-9\s\d+\.\d+\-]/.test(x))
+        {
+          alert('Введенное значение x не является числом, пожалуйста попробуйте еще раз!');
+          x = prompt('Введите число x', '');
+        }
+        
+        while(/[\s]/.test(x))
+        {
+          alert('Введенное вами значение не является числовым, вероятно вы ввели пробелы или точку, либо пробелы содержатся между циврами. Также возможно вы ввели большое количество точек между цифрами!');
+          x = prompt('Введите число x: ', '');
+        }
+        
+        //Entering the degree value (Ввод значения степени)
+        let y = prompt('Введите число y', '');
+        while (y.length == 0)
+        {
+          alert('Вы забыли ввести значение переменной y!');
+          y = prompt('Введите число y', '');
+        }
+
+        while (/[^0-9\s\-\d+\.\d+]/.test(y))
+        {
+          alert('Введенное значение y не является числом, пожалуйста попробуйте еще раз!');
+          y = prompt('Введите число y', '');
+        }
+
+        while (/[\s]/.test(y))
+        {
+          alert('Введенное вами значение не является числовым, вероятно вы ввели пробелы или точку, либо пробелы содержатся между циврами. Также возможно вы ввели большое количество точек между цифрами!');
+          y = prompt('Введите число y: ', '');
+        }
+        
+        /*Using operators and displaying the results of raising a number to a power (Использование операторов и вывод результатов возведения числа в степень)*/
+        //If both variables are zero (Если обе переменные равны нулю)
+        if(+x == 0 && +y == 0)
+        {
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + 1);
+        }
+
+        //If only the number raised to a power is zero (Если только возводимое в степень число равно нулю)
+        else if(+x == 0)
+        {
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + x);
+        }
+        //If the number raised to a power is less than zero (Если возводимое в степень числа меньше нуля)
+        else if(+x < 0)
+        {
+          let z = + x;
+          let i = 2;
+
+          while (i <= y) {
+            z = z * x;
+            i++;
+          }
+          if(y % 2 == 0)
+          {
+            z = -z;
+          }
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
+
+          if (z == Infinity) {
+            alert('Не возможно вывести ответ, так как полученное число выходит за пределы типа данных Number')
+          }
+        }
+
+        //If the number raised to a power is a fraction (Если возводимое в степень число является дробным)
+        else if (/[\d+\.\d+\-]/.test(x))
+        {
+          let z = Math.pow(x, y);
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
+          if (z == Infinity)
+          {
+            alert('Не возможно вывести ответ, так как полученное число выходит за пределы типа данных Number')
+          }
+        }
+        
+        //If only the degree value is zero (Если только значение степени равно нулю)
+        else if(+y == 0)
+        {
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + 1);
+        }
+        else if(+y < 0)
+        {
+          let z = + x;
+          let i = 2;
+
+          while (i <= Math.abs(y))
+          {
+            z = z * x;
+            i++;
+          }
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
+          if (z == Infinity)
+          {
+            alert('Не возможно вывести ответ, так как полученное число выходит за пределы типа данных Number')
+          }
+        }
+
+        //If the exponent value is greater than zero (Если значение степени больше нуля)
+        else if (+y > 0)
+        {
+          let z = + x;
+          let i = 2;
+          while (i <= y) {
+            z = z * x;
+            i++;
+          }
+
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
+          if (z == Infinity)
+          {
+            alert('Не возможно вывести ответ, так как полученное число выходит за пределы типа данных Number')
+          }
+        }
+
+        //If the degree value is a fraction (Если значение степени является дробным)
+        else if(/[\d+\.\d+\-]/.test(y))
+        {
+          let z = Math.pow(x, y);
+          alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
+          if (z == Infinity)
+          {
+            alert('Не возможно вывести ответ, так как полученное число выходит за пределы типа данных Number')
+          }
+        }
+
+        /*If the number being raised to a power is negative and the value of the power is a fraction (Если возводимое в степень число является отрицательным и значение степени дробным)*/
+        else if(+x < 0 && /[\d+\.\d+\-]/.test(y))
+        {
+          alert('Извините, но нельзя возвести отрицательное число в дробную степень')
+        }  
+      </script>
+    </body>
+    
+  </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Пример с линиями</title>
+
+      <style>
+        /*--- Align title text to the center (Выравниваем текст заголовка по центру) ---*/
+        h1{
+          text-align: center;
+        }
+      </style>
+    </head>
+
+    <body>
+      <h1>Пример простой линии</h1>
+      <script>
+        function line(n)
+        {
+          document.writeln("<hr align = 'center' width = '"+ n +"'>");
+        }
+        let x = 10
+
+        for(let i = 1; i < 21; i++)
+        {
+          line(x);
+          x = x + 20;
+        }
+      </script>
+    </body>
+    
+  </html>

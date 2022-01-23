@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Задание 2</title>
+    </head>
+
+    <body>
+      <script>
+        //Request information about the color of the mushroom (Запрос сведений о цвете гриба)
+        let color = prompt('Какого цвета гриб: белый, желтый, красный или коричневый?');
+        while(color != 'белый' && color != 'желтый' && color != 'красный' && color != 'коричневый')
+        {
+          alert('Цвет гриба введен не корректно, пожалуйста попробуйте еще раз!');
+          color = prompt('Какого цвета гриб: белый, желтый, красный или коричневый?');
+        }
+
+        //Checking the Availability of the Skirt (Проверка сведений о наличии юбки)
+        let skirt = confirm('Есть ли у гриба убка?');
+        switch (color) {
+          case 'белый':
+            if(skirt == false)
+            {
+              alert('Вы нашли белый гриб!');
+            }
+
+            else
+            {
+              alert('С грибами надо быть внимательнее!!!');
+            }
+            break;
+          case 'красный':
+            if (skirt == true)
+            {
+              alert('А не мухомор ли это?');
+            }
+            break;
+
+          case 'красный':
+            if (skirt == false)
+            {
+              alert('Может это подосиновик?');
+            }
+            break;
+          default:
+            alert('С грибами надо быть внимательнее!!!');
+            break;
+        }
+      </script>
+    </body>
+    
+  </html>

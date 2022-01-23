@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Задание 1</title>
+    </head>
+    
+    <body>
+      <script>
+        //Data input (Воод данных)
+        let m = prompt('Введите пожалуйста порядковый номер месяца в числовом формате', '');
+        while(/[^\d+]/.test(m))
+        {
+          alert('Введен неправильный номер месяца(вероятно введено не численное значение, либо значение содержащее не цивровые символы), пожалуйста попробуйте еще раз');
+          m = prompt('Введите пожалуйста порядковый номер месяца в числовом формате', '')
+        }
+
+        //Entering an additional variable for the switch statement (Ввод дополнительной переменной для оператора switch)
+        let timeyear = '';
+        switch (+m)
+        {
+          case 1:
+            timeyear = 'Зима';
+            break;
+
+          case 2:
+            timeyear = 'Зима';
+            break;
+          case 3:
+            timeyear = 'Весна';
+            break;
+          case 4:
+            timeyear = 'Весна';
+            break;
+
+          case 5:
+            timeyear = 'Весна';
+            break;
+          case 6:
+            timeyear = 'Лето';
+            break;
+          case 7:
+            timeyear = 'Лето';
+            break;
+
+          case 8:
+            timeyear = 'Лето';
+            break;
+          case 9:
+            timeyear = 'Осень';
+            break;
+          case 10:
+            timeyear = 'Осень';
+            break;
+
+          case 11:
+            timeyear = 'Осень';
+            break;
+          case 12:
+            timeyear = 'Зима';
+            break;
+          default:
+            timeyear = 'Извините но в году только 12 месяцев!';
+            break;
+        }
+
+        //Result Output (Вывод результата)
+        alert(timeyear);
+      </script>
+    </body>
+
+  </html>
