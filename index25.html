@@ -18,7 +18,7 @@
           x = prompt('Введите число x', '');
         }
 
-        while (/[^0-9\s\d+\.\d+\-]/.test(x))
+        while (!isFinite(x))
         {
           alert('Введенное значение x не является числом, пожалуйста попробуйте еще раз!');
           x = prompt('Введите число x', '');
@@ -38,7 +38,7 @@
           y = prompt('Введите число y', '');
         }
 
-        while (/[^0-9\s\-\d+\.\d+]/.test(y))
+        while (!isFinite(y))
         {
           alert('Введенное значение y не является числом, пожалуйста попробуйте еще раз!');
           y = prompt('Введите число y', '');
@@ -54,16 +54,32 @@
         //If both variables are zero (Если обе переменные равны нулю)
         if(+x == 0 && +y == 0)
         {
-          alert('Число ' + x + ' в степени ' + y + ' равно ' + 1);
+          alert('Число ' + x + ' в степени ' + y + ' имеет неопределенное значение и в зависимости от выполняемых задач может принимать значение как 0, так и 1 ' );
+        }
+
+        else if(x == '-0')
+        {
+          alert('Извините, но вы ввели не корректные данные, цифра 0 не может принимать отрицателное значение (не верная запись "-0")')
         }
 
         //If only the number raised to a power is zero (Если только возводимое в степень число равно нулю)
-        else if(+x == 0)
+        else if(+x == 0 && y > 0)
         {
           alert('Число ' + x + ' в степени ' + y + ' равно ' + x);
         }
+
+        else if (+x == 0 && +y < 0)
+        {
+          alert('Извините, но запрещено возводить число "0" в отрицательную степень!');
+        }
+
+        else if(+x < 0 && !Number.isInteger(+y))
+        {
+          alert('Извините, но нельзя возвести отрицательное число в дробную степень');
+        }
+
         //If the number raised to a power is less than zero (Если возводимое в степень числа меньше нуля)
-        else if(+x < 0)
+        else if((+x < 0 && (Number.isInteger(+y) && y < 0)) || (+x < 0 && (Number.isInteger(+y) && y > 0)))
         {
           let z = + x;
           let i = 2;
@@ -133,22 +149,23 @@
           }
         }
 
-        //If the degree value is a fraction (Если значение степени является дробным)
-        else if(/[\d+\.\d+\-]/.test(y))
+        /*If the number being raised to a power is negative and the value of the power is a fraction (Если возводимое в степень число является отрицательным и значение степени дробным)*/
+        else if((+x < 0 && (!Number.isInteger(+y) && +y < 0)) || (+x < 0 && (!Number.isInteger(+y) && +y > 0)))
         {
+          alert('Извините, но нельзя возвести отрицательное число в дробную степень');
+        }  
+
+        //If the degree value is a fraction (Если значение степени является дробным)
+        else if (+x > 0 && /[\d+\.\d+\-]/.test(y)) {
           let z = Math.pow(x, y);
-          alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
-          if (z == Infinity)
-          {
+          if (z == Infinity) {
             alert('Не возможно вывести ответ, так как полученное число выходит за пределы типа данных Number')
           }
+          else
+          {
+             alert('Число ' + x + ' в степени ' + y + ' равно ' + z);
+          }
         }
-
-        /*If the number being raised to a power is negative and the value of the power is a fraction (Если возводимое в степень число является отрицательным и значение степени дробным)*/
-        else if(+x < 0 && /[\d+\.\d+\-]/.test(y))
-        {
-          alert('Извините, но нельзя возвести отрицательное число в дробную степень')
-        }  
       </script>
     </body>
     
